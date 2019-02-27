@@ -19,14 +19,8 @@ class CommentInput extends Component {
     })
   }
   submitData() {
-    if (!this.state.username) {
-      alert('用户名不能为空')
-      return
-    }
-    if (!this.state.content) {
-      alert('评论不能为空')
-      return
-    }
+    if (!this.state.username) return alert('用户名不能为空')
+    if (!this.state.content) return alert('评论不能为空')
     if(this.props.onSubmit) {
       let {username, content} = this.state
       this.props.onSubmit({username, content})
