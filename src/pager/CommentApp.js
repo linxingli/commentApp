@@ -3,11 +3,24 @@ import CommentInput from './CommentInput'
 import CommentList from './CommentList'
 
 class CommentApp extends Component {
+  constructor() {
+    super()
+    this.state = {
+      commentData: []
+    }
+  }
+  getUsernameAndContent(data) {
+    let temp = this.state.commentData
+    temp.push(data)
+    this.setState({
+      commentData: temp
+    })
+  }
   render() {
     return (
       <div className='wrapper'>
-        <CommentInput></CommentInput>
-        <CommentList></CommentList>
+        <CommentInput onSubmit={this.getUsernameAndContent.bind(this)}></CommentInput>
+        <CommentList commentData={this.state.commentData}></CommentList>
       </div>
     )
   }
