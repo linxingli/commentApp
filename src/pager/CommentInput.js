@@ -8,9 +8,18 @@ class CommentInput extends Component {
       content: ''
     }
   }
+  componentWillMount() {
+    this.setState({
+      username: localStorage.getItem('userName')
+    })
+  }
   componentDidMount() {
-    console.log('textarea', this.textarea);
     this.textarea.focus()
+  }
+  // 保存用户名至localStorage
+  saveUserNametoLocal(e) {
+    console.log('e', e.target.value);
+    localStorage.setItem('userName', e.target.value)
   }
   settingUsername(e) {
     this.setState({
@@ -40,7 +49,8 @@ class CommentInput extends Component {
           <span className='comment-field-name'>用户名：</span>
           <div className='comment-field-input'>
             <input value={this.state.username}
-              onChange={this.settingUsername.bind(this)}/>
+              onChange={this.settingUsername.bind(this)}
+              onBlur={this.saveUserNametoLocal.bind(this)}/>
           </div>
         </div>
         <div className='comment-field'>
