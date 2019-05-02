@@ -9,17 +9,25 @@ class CommentInput extends Component {
     }
   }
   componentWillMount() {
-    this.setState({
-      username: localStorage.getItem('userName')
-    })
+    this._loadUserName()
   }
   componentDidMount() {
     this.textarea.focus()
   }
   // 保存用户名至localStorage
   saveUserNametoLocal(e) {
-    console.log('e', e.target.value);
-    localStorage.setItem('userName', e.target.value)
+    this._saveUserName(e.target.value)
+  }
+  _saveUserName(data) {
+    if (data) {
+      localStorage.setItem('userName', data)
+    }
+  }
+  _loadUserName() {
+    let username = localStorage.getItem('userName')
+    if(username) {
+      this.setState({username})
+    }
   }
   settingUsername(e) {
     this.setState({
