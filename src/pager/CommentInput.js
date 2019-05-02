@@ -8,6 +8,10 @@ class CommentInput extends Component {
       content: ''
     }
   }
+  componentDidMount() {
+    console.log('textarea', this.textarea);
+    this.textarea.focus()
+  }
   settingUsername(e) {
     this.setState({
       username: e.target.value
@@ -43,6 +47,7 @@ class CommentInput extends Component {
           <span className='comment-field-name'>评论内容：</span>
           <div className='comment-field-input'>
             <textarea value={this.state.content}
+              ref={(textarea) => this.textarea = textarea}
               onChange={this.settingContent.bind(this)}/>
           </div>
         </div>
