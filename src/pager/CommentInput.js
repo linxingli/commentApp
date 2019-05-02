@@ -14,10 +14,6 @@ class CommentInput extends Component {
   componentDidMount() {
     this.textarea.focus()
   }
-  // 保存用户名至localStorage
-  saveUserNametoLocal(e) {
-    this._saveUserName(e.target.value)
-  }
   _saveUserName(data) {
     if (data) {
       localStorage.setItem('userName', data)
@@ -28,6 +24,10 @@ class CommentInput extends Component {
     if(username) {
       this.setState({username})
     }
+  }
+  // 保存用户名至localStorage
+  saveUserNametoLocal(e) {
+    this._saveUserName(e.target.value)
   }
   settingUsername(e) {
     this.setState({
