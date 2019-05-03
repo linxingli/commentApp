@@ -24,18 +24,22 @@ class CommentApp extends Component {
     localStorage.setItem('commentData', JSON.stringify(data))
   }
   getUsernameAndContent(data) {
-    let temp = this.state.commentData
-    temp.push(data)
-    this._saveComments(temp)
-    this.setState({
-      commentData: temp
-    })
+    let commentData = this.state.commentData
+    commentData.push(data)
+    this.setState({ commentData })
+    this._saveComments(commentData)
+  }
+  delComment(index) {
+    let commentData = this.state.commentData
+    commentData.splice(index,1)
+    this.setState({ commentData })
+    this._saveComments(commentData)
   }
   render() {
     return (
       <div className='wrapper'>
         <CommentInput onSubmit={this.getUsernameAndContent.bind(this)}></CommentInput>
-        <CommentList commentData={this.state.commentData}></CommentList>
+        <CommentList commentData={this.state.commentData} delComment={this.delComment.bind(this)}></CommentList>
       </div>
     )
   }

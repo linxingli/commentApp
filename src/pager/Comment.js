@@ -20,14 +20,14 @@ class Comment extends Component {
 
   _updateTimeString() {
     let difftime = (+new Date() - this.props.comment.createdTime)/1000
-    difftime = difftime > 60 ? `${Math.round(difftime/60)}分钟前`:`${Math.round(difftime)}秒前`
+    difftime = difftime > 3600 ? `${Math.round(difftime/3600)} 小时前`:`${Math.round(difftime/60)} 分钟前`
     this.setState({
       timeString: difftime
     })
   }
 
   render() {
-    const { comment } = this.props
+    const { comment, delComment, index } = this.props
 
     return(
       <div className='comment'>
@@ -37,6 +37,9 @@ class Comment extends Component {
         <p>{comment.content}</p>
         <span className='comment-createdtime'>
           {this.state.timeString}
+        </span>
+        <span className='comment-delete' onClick={delComment.bind(this, index)}>
+          删除
         </span>
       </div>
     )
