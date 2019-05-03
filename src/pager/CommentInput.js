@@ -44,7 +44,11 @@ class CommentInput extends Component {
     if (!this.state.content) return alert('评论不能为空')
     if(this.props.onSubmit) {
       let {username, content} = this.state
-      this.props.onSubmit({username, content})
+      this.props.onSubmit({
+        username,
+        content,
+        createdTime: +new Date()
+      })
     }
     this.setState({
       content: ''

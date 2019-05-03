@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import CommentInput from './CommentInput'
 import CommentList from './CommentList'
-import { timingSafeEqual } from 'crypto';
 
 class CommentApp extends Component {
   constructor() {
