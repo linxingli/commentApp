@@ -1,5 +1,5 @@
 import React,{ Component } from 'react'
-import warpWithLoadData from './component/warpWithLoadData'
+// import warpWithLoadData from './component/warpWithLoadData'
 
 class CommentInput extends Component {
   constructor(props) {
