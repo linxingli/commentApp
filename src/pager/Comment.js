@@ -25,7 +25,8 @@ class Comment extends Component {
       timeString: difftime
     })
   }
-
+ 
+  // 评论内容支持代码显示效果
   _getProcessedContent(data) {
     return data
       .replace(/&/g, "&amp;")

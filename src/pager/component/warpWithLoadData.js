@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+/**
+ * @pramas name localStorage的ItemName
+ */
 export default (WarppedComponent, name) => {
   class LocalStorageActions extends Component {
     constructor() {
@@ -10,7 +13,7 @@ export default (WarppedComponent, name) => {
     }
 
     componentWillMount() {
-      let data = localStorage.getItem(name)
+      let data = localStorage.getItem(name) || []
       try {
         this.setState({
           // 尝试把它解释成JSON对象
