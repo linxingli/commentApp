@@ -9,27 +9,27 @@ class CommentInput extends Component {
       content: ''
     }
   }
-  // componentWillMount() {
-  //   this._loadUserName()
-  // }
+  componentWillMount() {
+    this._loadUserName()
+  }
   componentDidMount() {
     this.textarea.focus()
   }
-  // _saveUserName(data) {
-  //   if (data) {
-  //     localStorage.setItem('userName', data)
-  //   }
-  // }
-  // _loadUserName() {
-  //   let username = localStorage.getItem('userName')
-  //   if(username) {
-  //     this.setState({username})
-  //   }
-  // }
+  _saveUserName(data) {
+    if (data) {
+      localStorage.setItem('userName', data)
+    }
+  }
+  _loadUserName() {
+    let username = localStorage.getItem('userName')
+    if(username) {
+      this.setState({username})
+    }
+  }
   // 保存用户名至localStorage
   saveUserNametoLocal(e) {
-    // this._saveUserName(e.target.value)
-    this.props.saveData(e.target.value)
+    this._saveUserName(e.target.value)
+    // this.props.saveData(e.target.value)
   }
   settingUsername(e) {
     this.setState({
@@ -85,6 +85,6 @@ class CommentInput extends Component {
   }
 }
 
-CommentInput = warpWithLoadData(CommentInput, 'userName')
+// CommentInput = warpWithLoadData(CommentInput, 'userName')
 
 export default CommentInput
