@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import CommentInput from './CommentInput'
-import CommentList from './CommentList'
+// import CommentInput from './components/CommentInput'
+import CommentInput from './containers/CommentInput'
+import CommentList from './components/CommentList'
 // import warpWithLoadData from './component/warpWithLoadData'
 
 class CommentApp extends Component {
@@ -48,8 +49,7 @@ class CommentApp extends Component {
   render() {
     return (
       <div className='wrapper'>
-        <CommentInput 
-          onSubmit={this.getUsernameAndContent.bind(this)}/>
+        <CommentInput />
         <CommentList 
           commentData={this.state.commentData} 
           delComment={this.delComment.bind(this)}/>

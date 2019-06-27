@@ -33,7 +33,7 @@ export default (state, action) => {
 }
 
 // 3.跟这个 reducer 相关的 action creators
-export const initComment = (comments) => {
+export const initComments = (comments) => {
   return {
     type: INIT_COMMENTS,
     comments

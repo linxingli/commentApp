@@ -1,35 +1,34 @@
 import React,{ Component } from 'react'
-// import warpWithLoadData from './component/warpWithLoadData'
+import PropTypes from 'prop-types'
 
-class CommentInput extends Component {
+export default class CommentInput extends Component {
+  static propTypes = {
+    username: PropTypes.any,
+    onSubmit: PropTypes.func,
+    onUserNameInputBlur: PropTypes.func
+  }
+
+  static defaultProps = {
+    username: ''
+  }
+
   constructor(props) {
     super(props)
     this.state = {
-      username: props.data,
+      username: props.username,
       content: ''
     }
   }
-  componentWillMount() {
-    this._loadUserName()
-  }
+  
   componentDidMount() {
     this.textarea.focus()
   }
-  _saveUserName(data) {
-    if (data) {
-      localStorage.setItem('userName', data)
-    }
-  }
-  _loadUserName() {
-    let username = localStorage.getItem('userName')
-    if(username) {
-      this.setState({username})
-    }
-  }
+
   // 保存用户名至localStorage
   saveUserNametoLocal(e) {
-    this._saveUserName(e.target.value)
-    // this.props.saveData(e.target.value)
+    if (this.props.onUserNameInputBlur) {
+      this.props.onUserNameInputBlur(e.target.value)
+    }
   }
   settingUsername(e) {
     this.setState({
@@ -42,8 +41,6 @@ class CommentInput extends Component {
     })
   }
   submitData() {
-    if (!this.state.username) return alert('用户名不能为空')
-    if (!this.state.content) return alert('评论不能为空')
     if(this.props.onSubmit) {
       let {username, content} = this.state
       this.props.onSubmit({
@@ -84,7 +81,3 @@ class CommentInput extends Component {
     )
   }
 }
-
-// CommentInput = warpWithLoadData(CommentInput, 'userName')
-
-export default CommentInput
